@@ -12,15 +12,3 @@ const VehicleSchema = new Schema({
 });
 
 module.exports = mongoose.model('Vehicle', VehicleSchema)
-
-
-// CREATE TABLE IF NOT EXISTS `mydb`.`Vehicle` (
-//     `vehicleID` INT NOT NULL,
-//     `make` VARCHAR(45) NULL,
-//     `model` VARCHAR(45) NULL,
-//     `year` INT NULL,
-//     `color` VARCHAR(45) NULL,
-//     `vehicleType` VARCHAR(45) NULL,
-//     `retailPrice` VARCHAR(45) NULL,
-//     PRIMARY KEY (`vehicleID`))
-//   ENGINE = InnoDB;

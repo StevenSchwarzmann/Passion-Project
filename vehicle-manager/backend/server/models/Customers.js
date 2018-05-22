@@ -11,11 +11,3 @@ const CustomerSchema = new Schema ({
 });
 
 module.exports = mongoose.model('Customer', CustomerSchema)
-
-// `customerID` INT NOT NULL,
-// `firstName` VARCHAR(45) NULL,
-// `lastName` VARCHAR(45) NULL,
-// `emailAddress` VARCHAR(45) NULL,
-// `telephone` VARCHAR(45) NULL,
-// `dateOfBirth` VARCHAR(45) NULL,
-// PRIMARY KEY (`customerID`))

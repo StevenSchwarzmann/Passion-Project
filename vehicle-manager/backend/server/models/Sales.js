@@ -11,12 +11,3 @@ const SaleSchema = new Schema({
 });
 
 mongoose.exports = mongoose.model('Sale', SaleSchema)
-
-
-// `saleID` INT NOT NULL,
-// `vehicleID` VARCHAR(45) NOT NULL,
-// `customerID` VARCHAR(45) NOT NULL,
-// `salePrice` VARCHAR(45) NULL,
-// `invoiceDate` VARCHAR(45) NULL,
-// `paymentDate` VARCHAR(45) NULL,
-// PRIMARY KEY (`saleID`))
