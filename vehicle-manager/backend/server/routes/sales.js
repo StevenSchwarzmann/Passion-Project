@@ -1,17 +1,17 @@
 const express = require("express");
 const router = express.Router();
-const Sales = require("../models/Sales");
+const Sale = require("../models/Sales");
 
 router.get("/", (req, res) => {
-    Sales
+    Sale
       .find()
-      .then(sales => {
-          res.status(200).json(sales);
+      .then(sale => {
+          res.status(200).json(sale);
     });
   });
   
   router.get("/:id", (req, res) => {
-    Sales
+    Sale
       .findById()
       .then(sale => {
           res.status(200).json(sale);
@@ -29,7 +29,7 @@ router.get("/", (req, res) => {
   });
 
     router.put("/:id", (req, res) => {
-      Sales
+      Sale
         .findById(req.body)
         .then( sale => {
           if(!sale) res.status(404).send();

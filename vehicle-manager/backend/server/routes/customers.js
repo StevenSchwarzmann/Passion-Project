@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const Customers = require("../models/Customers");
+const Customer = require("../models/Customers");
 
 router.get("/", (req, res) => {
-    Customers
+    Customer
       .find()
-      .then(customers => {
-          res.status(200).json(customers);
+      .then(customer => {
+          res.status(200).json(customer);
     });
   });
   
   router.get("/:id", (req, res) => {
-    Customers
+    Customer
       .findById()
       .then(customer => {
           res.status(200).json(customer);
@@ -29,7 +29,7 @@ router.get("/", (req, res) => {
   });
 
     router.put("/:id", (req, res) => {
-      Customers
+      Customer
         .findById(req.body)
         .then( customer => {
           if(!customer) res.status(404).send();
@@ -40,7 +40,7 @@ router.get("/", (req, res) => {
     })
 
     router.delete("/:id", (req,res) => {
-        Customers
+        Customer
         .findByIdAndRemove(req.body, (err, deletedCustomer) => {
           if(deletedCustomer) {
             res.status(200).json(deletedVehicle);

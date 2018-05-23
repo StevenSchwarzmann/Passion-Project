@@ -12,8 +12,8 @@ mongoose.Promise = Promise;
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 
-app.use('/api/customers', require('./routes/customers'));
-app.use('/api/sales', require('./routes/sales'));
-app.use('/api/vehicles', require('./routes/vehicles'));
+app.use('/api/customers', require('../backend/server/routes/customers'));
+app.use('/api/sales', require('../backend/server/routes/sales'));
+app.use('/api/vehicles', require('../backend/server/routes/vehicles'));
 
 module.exports = app;
