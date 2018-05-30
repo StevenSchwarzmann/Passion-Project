@@ -12,17 +12,17 @@ router.get("/", (req, res) => {
   
   router.get("/:id", (req, res) => {
     Vehicle
-      .findById()
+      .findById(req.params.id)
       .then(vehicle => {
-          res.status(200).json(vehicle);
-    });
+           vehicle ? res.status(200).json(vehicle) : res.status(404).send("Error 404: Vehicle not found");
+    }).catch(err => res.status(500).send("An internal server error has occured"));
   });
   
   router.post("/", (req, res) => {
-    const vehicle = new Vehicle(req.body);
+    let vehicle = new Vehicle(req.body);
     vehicle
       .save()
-      .then(vehcile => {
+      .then(vehicle => {
         res.status(201).json(vehicle)
         console.log("Vehicle saved to DB")
       }).catch(err => res.send(console.err))
@@ -30,18 +30,16 @@ router.get("/", (req, res) => {
 
     router.put("/:id", (req, res) => {
       Vehicle
-        .findById(req.body)
+        .findByIdAndUpdate(req.params.id, req.body)
         .then( vehicle => {
-          if(!vehicle) res.status(404).send();
-          console.log("Saved updated vehicle");
-          res.status(204).json(vehicle);
+            vehicle ? res.status(204).json(vehicle) : res.status(404).send("Opps! Something went wrong, Could not update vehicle");
         })
-        .catch(err => res.send(err.message));
+        .catch(err => res.send(console.err));
     })
 
     router.delete("/:id", (req,res) => {
         Vehicle
-        .findByIdAndRemove(req.body, (err, deletedVehicle) => {
+        .findByIdAndRemove(req.params.id, (err, deletedVehicle) => {
           if(deletedVehicle) {
             res.status(200).json(deletedVehicle);
           } else {

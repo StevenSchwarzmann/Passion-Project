@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
   
   router.get("/:id", (req, res) => {
     Sale
-      .findById()
+      .findById(req.params.id)
       .then(sale => {
           res.status(200).json(sale);
     });
@@ -30,13 +30,12 @@ router.get("/", (req, res) => {
 
     router.put("/:id", (req, res) => {
       Sale
-        .findById(req.body)
+        .findByIdAndUpdate(req.params.id, req.body)
         .then( sale => {
-          if(!sale) res.status(404).send();
-          console.log("Saved updated sale");
-          res.status(204).json(sale);
+          sale ? res.status(204).json(sale) : res.status(404).send("Opps! Something went wrong, Could not update sale");
+          
         })
-        .catch(err => res.send(err.message));
+        .catch(err => res.send(console.err));
     })
 
     router.delete("/:id", (req,res) => {

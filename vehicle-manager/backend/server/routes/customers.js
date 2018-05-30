@@ -3,6 +3,7 @@ const router = express.Router();
 const Customer = require("../models/Customers");
 
 router.get("/", (req, res) => {
+  console.log(req.params)
     Customer
       .find()
       .then(customer => {
@@ -12,7 +13,7 @@ router.get("/", (req, res) => {
   
   router.get("/:id", (req, res) => {
     Customer
-      .findById()
+      .findById(req.params.id)
       .then(customer => {
           res.status(200).json(customer);
     });
@@ -30,11 +31,9 @@ router.get("/", (req, res) => {
 
     router.put("/:id", (req, res) => {
       Customer
-        .findById(req.body)
+        .findByIdAndUpdate(req.params.id, req.body)
         .then( customer => {
-          if(!customer) res.status(404).send();
-          console.log("Saved updated customer");
-          res.status(204).json(customer);
+          customer ? res.status(204).json(customer) : res.status(404).send("Opps! Something went wrong, Could not update customer");
         })
         .catch(err => res.send(err.message));
     })
