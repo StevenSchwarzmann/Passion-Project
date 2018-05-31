@@ -13,23 +13,23 @@ class NavBar extends Component {
       <ul id="navBar">
         <li className="navTitle">Vehicle Manager</li>
         <li className="navItem">
-          <Link to="/">
-            <a className="navA"> Home </a>
+          <Link to="/" className="navA">
+            Home 
           </Link>
         </li>
         <li id="currentNavItem">
-          <Link to="/vehicles/grid">
-            <a className="navA"> Vehicles </a>
+          <Link to="/vehicles/grid" className="navA">
+            Vehicles
           </Link>
         </li>
         <li className="navItem">
-          <Link to="/sales/grid">
-            <a className="navA"> Sales </a>
+          <Link to="/sales/grid" className="navA">
+           Sales
           </Link>
         </li>
         <li className="navItem">
-          <Link to="/customers/grid">
-            <a className="navA"> Customers </a>
+          <Link to="/customers/grid" className="navA">
+           Customers
           </Link>
         </li>
       </ul>
